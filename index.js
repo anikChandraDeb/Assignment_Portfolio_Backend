@@ -18,6 +18,7 @@ const app = express();
 app.use(cors({
     origin: {
         'http://localhost:5173':true,
+        'portfolio-aniks.netlify.app':true
         }, // Replace with your frontend URL
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,  //  If using cookies/auth
