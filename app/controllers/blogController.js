@@ -27,7 +27,7 @@ export const getBlogById = async (req, res) => {
 
 export const blogCount = async (req, res) => {
     try {
-        console.log('invoke')
+
         const count = await Blog.countDocuments(); 
         res.json({ count });
       } catch (error) {

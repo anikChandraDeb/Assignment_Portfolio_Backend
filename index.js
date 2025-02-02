@@ -16,10 +16,7 @@ const app = express();
 //Global Application Middleware
 // app.use(cors());
 app.use(cors({
-    origin: {
-        'http://localhost:5173':true,
-        'https://portfolio-aniks.netlify.app':true
-        }, // Replace with your frontend URL
+    origin: "https://portfolio-aniks.netlify.app", 
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,  //  If using cookies/auth
 }));
