@@ -3,7 +3,7 @@ import Team from '../models/Team.js';
 //  Get All Team Members
 export const getAllTeamMembers = async (req, res) => {
     try {
-        const teamMembers = await Team.find();
+        const teamMembers = await Team.find().sort({ createdAt: -1 });
         res.json(teamMembers);
     } catch (error) {
         res.status(500).json({ message: error.message });

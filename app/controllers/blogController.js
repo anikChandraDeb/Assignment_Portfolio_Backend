@@ -3,7 +3,7 @@ import Blog from '../models/Blog.js';
 export const getAllBlogs = async (req, res) => {
     try {
         if(req.params.limit!=0){
-            const blogs = await Blog.find().limit(parseInt(req.params.limit));
+            const blogs = await Blog.find().sort({ createdAt: -1 }).limit(parseInt(req.params.limit));
             res.json(blogs);
         }
         else{
