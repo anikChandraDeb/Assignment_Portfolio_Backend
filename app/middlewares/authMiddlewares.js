@@ -1,7 +1,8 @@
 import {DecodeToken} from '../utility/tokenUtility.js';
 
 export default(req,res,next)=>{
-    let token=req.headers['authToken'];
+    let token = req.headers.authToken?.split(" ")[1]; // Extract token after "Bearer"
+
     if(!token){
         token=req.cookies['authToken'];
     }
