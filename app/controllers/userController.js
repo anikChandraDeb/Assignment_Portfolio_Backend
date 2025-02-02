@@ -56,7 +56,7 @@ export const loginUser = async (req, res) => {
         res.cookie('authToken',token,{
             httpOnly: true,
             secure:true,    // false in dev, true in production  
-            sameSite: 'Strict',  
+            sameSite: 'None',  
             expires: new Date(Date.now() + 86400000),
             path: "/",
 
