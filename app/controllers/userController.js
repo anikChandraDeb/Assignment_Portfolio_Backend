@@ -40,12 +40,12 @@ export const loginUser = async (req, res) => {
 
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ message: 'User not found' });
+            return res.status(400).json({ message: 'Invalid email or password' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid password' });
+            return res.status(400).json({ message: 'Invalid email or password' });
         }
 
         // Generate JWT Token
@@ -55,8 +55,8 @@ export const loginUser = async (req, res) => {
 
         res.cookie('authToken',token,{
             httpOnly: true,
-            secure:true,    // false in dev, true in production  
-            sameSite: 'None',  
+            secure:false,      
+            sameSite: 'Strict',  
             expires: new Date(Date.now() + 86400000),
             path: "/",
 

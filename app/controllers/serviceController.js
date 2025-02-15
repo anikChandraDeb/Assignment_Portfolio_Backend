@@ -2,7 +2,7 @@ import Service from '../models/Service.js';
 
 export const getAllServices = async (req, res) => {
     try {
-        const services = await Service.find().sort({ createdAt: -1 });
+        const services = await Service.find();
         res.json(services);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -31,12 +31,13 @@ export const serviceCount = async (req, res) => {
 
 export const createService = async (req, res) => {
     try {
-        console.log('invoke')
-        const { title, description } = req.body;
+        //console.log('invoke')
+        const { title, description,image } = req.body;
 
         const newService = new Service({
             title,
             description,
+            image,
             createdBy: req.headers.email, 
             userId: req.headers.user_id  
         });
